@@ -1,0 +1,15 @@
+#These queries will use the already re-organized shipping.csv file that's outputted by the first part of the ipynb script
+
+#Create table
+CREATE TABLE shipping (port VARCHAR(255), year SMALLINT, 
+totalTEU SMALLINT, importTEU SMALLINT, exportTEU SMALLINT, 
+totalMT SMALLINT, importMT SMALLINT, exportMT SMALLINT);
+
+#You may need to give MySQL load permission from the command line:
+mysql -u root -p --local-infile yourDatabaseName
+
+#Load data from CSV (first column of numbers was manually removed)(by me)(in excel)
+LOAD DATA LOCAL INFILE '~/Desktop/Data_Science/shipping/shippingSQL.csv' 
+INTO TABLE shipping
+COLUMNS TERMINATED BY ','
+IGNORE 1 LINES;
