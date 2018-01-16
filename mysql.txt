@@ -102,4 +102,18 @@ GROUP BY port
 ORDER BY ratio DESC
 LIMIT 10;
 
+## Which ports import the heaviest and lightest freight? ##
 
+#Heaviest cargo by port
+SELECT port, AVG(totalMT) / AVG(totalTEU) AS weight
+FROM shipping
+GROUP BY port
+ORDER BY weight DESC
+LIMIT 10;
+
+#Lightest cargo by port
+SELECT port, AVG(totalMT) / AVG(totalTEU) AS weight
+FROM shipping
+GROUP BY port
+ORDER BY weight
+LIMIT 10;
