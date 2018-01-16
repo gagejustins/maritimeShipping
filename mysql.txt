@@ -79,9 +79,27 @@ GROUP BY port
 ORDER BY AVG(exportTEU) DESC
 LIMIT 10;
 
+#Total, import, and export volume all together
+SELECT port, AVG(totalTEU), AVG(importTEU), AVG(exportTEU)
+FROM shipping
+GROUP BY port
+ORDER BY AVG(totalTEU) DESC
+LIMIT 10;
 
+## Which ports have the least balanced import / export ratio? ##
 
+#Top ports by imports / exports
+SELECT port, AVG(importTEU) / AVG(exportTEU) AS ratio
+FROM shipping
+GROUP BY port
+ORDER BY ratio DESC
+LIMIT 10;
 
-
+#Top ports by exports / imports
+SELECT port, AVG(exportTEU) / AVG(importTEU) AS ratio
+FROM shipping
+GROUP BY port
+ORDER BY ratio DESC
+LIMIT 10;
 
 
