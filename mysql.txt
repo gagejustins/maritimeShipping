@@ -13,3 +13,41 @@ LOAD DATA LOCAL INFILE '~/Desktop/Data_Science/shipping/shippingSQL.csv'
 INTO TABLE shipping
 COLUMNS TERMINATED BY ','
 IGNORE 1 LINES;
+
+#DESCRIPTIVE STATISTICS
+
+#Average total TEUs
+SELECT AVG(totalTEU)
+FROM shipping;
+
+#Average import TEUs
+SELECT AVG(importTEU)
+FROM shipping;
+
+#Average export TEUs
+SELECT AVG(exportTEU)
+FROM shipping;
+
+#Import to export TEU ratio
+SELECT AVG(importTEU) / AVG(exportTEU) 
+AS ratio
+FROM shipping;
+
+#Average total MTs
+SELECT AVG(totalMT)
+FROM shipping;
+
+#Average import MTs
+SELECT AVG(importMT)
+FROM shipping;
+
+#Average export MTs
+SELECT AVG(exportTEU)
+FROM shipping;
+
+#Import to export MT ratio
+SELECT AVG(importMT) / AVG(exportMT) 
+AS ratio
+FROM shipping;
+
+
