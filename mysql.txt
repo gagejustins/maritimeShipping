@@ -14,7 +14,7 @@ INTO TABLE shipping
 COLUMNS TERMINATED BY ','
 IGNORE 1 LINES;
 
-#DESCRIPTIVE STATISTICS
+## Descriptive statistics ##
 
 #Average total TEUs
 SELECT AVG(totalTEU)
@@ -55,3 +55,33 @@ SELECT port, SUM(totalTEU)
 FROM shipping 
 GROUP BY port 
 HAVING SUM(totalTEU) <= 0;
+
+## Which ports import and export the most ##
+
+#Highest average shipping volume
+SELECT port, AVG(totalTEU)
+FROM shipping
+GROUP BY port
+ORDER BY AVG(totalTEU) DESC
+LIMIT 10;
+
+#Highest average import volume
+SELECT port, AVG(importTEU)
+FROM shipping
+GROUP BY port
+ORDER BY AVG(importTEU) DESC
+LIMIT 10;
+
+#Highest average export volume
+SELECT port, AVG(exportTEU)
+FROM shipping
+GROUP BY port
+ORDER BY AVG(exportTEU) DESC
+LIMIT 10;
+
+
+
+
+
+
+
