@@ -50,4 +50,8 @@ SELECT AVG(importMT) / AVG(exportMT)
 AS ratio
 FROM shipping;
 
-
+#Are there any ports that haven't shipped any TEUs?
+SELECT port, SUM(totalTEU) 
+FROM shipping 
+GROUP BY port 
+HAVING SUM(totalTEU) <= 0;
